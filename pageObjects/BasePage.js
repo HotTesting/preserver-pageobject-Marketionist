@@ -7,8 +7,8 @@ class BasePage {
         this.noteFirst = $$('.grid-container .grid-item').first()
         this.buttonOptions = $('.navbar-right .glyphicon-option-vertical')
 
-        this.createOptionSelector = (optionText) => '//*[ancestor::*[@class="dropdown open"]' +
-            ' and text()="' + optionText + '"]'
+        this.createOptionSelector = (optionText) => `//*[ancestor::*[@class="dropdown open"]` +
+            ` and text()="${optionText}"]`
 
         this.optionArchiveNotes = element(by.xpath(this.createOptionSelector('Archive Notes')))
         this.optionMyNotes = element(by.xpath(this.createOptionSelector('My Notes')))
@@ -24,6 +24,7 @@ class BasePage {
     goTo(option) {
         this.buttonOptions.click()
         option.click()
+        browser.sleep(browser.params.customTimeout)
     }
 
 }

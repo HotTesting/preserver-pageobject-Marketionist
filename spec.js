@@ -109,8 +109,6 @@ describe('Preserver tests', function () {
 
         notesPage.goTo(notesPage.optionAbout)
 
-        browser.sleep(browser.params.customTimeout)
-
         expect(aboutPage.iconArrowLeft.isDisplayed()).toBe(true,
             'Icon Back (Arrow Left) should be displayed')
         expect(aboutPage.iconGithub.isDisplayed()).toBe(true,
