@@ -41,28 +41,28 @@ describe('Preserver tests', function () {
         })
     })
 
-    it('should be created when title and body provided', function () {
+    xit('should be created when title and body provided', function () {
 
         notesPage.createNote('Test', 'Test')
         expect(notesPage.getNotes().count()).toBe(1,
             'Notes count should be 1 after it was created')
     })
 
-    it('should be created when only title provided', function () {
+    xit('should be created when only title provided', function () {
 
         notesPage.createNote('Test', '')
         expect(notesPage.getNotes().count()).toBe(1,
             'Notes count should be 1 after it was created')
     })
 
-    it('should be created when only body provided', function () {
+    xit('should be created when only body provided', function () {
 
         notesPage.createNote('', 'Test')
         expect(notesPage.getNotes().count()).toBe(1,
             'Notes count should be 1 after it was created')
     })
 
-    it('should NOT be created when nothing provided', function () {
+    xit('should NOT be created when nothing provided', function () {
 
         notesPage.createNote('', '')
         expect(notesPage.getNotes().count()).toBe(0,
@@ -79,11 +79,7 @@ describe('Preserver tests', function () {
 
         notesPage.archiveNote()
 
-        browser.sleep(browser.params.customMinTimeout)
-
         archivePage.unarchiveNote()
-
-        browser.sleep(browser.params.customMinTimeout)
 
         expect(notesPage.getNotes().count()).toBe(1,
             'Archived notes count should be 1 after it was unarchived')
@@ -95,19 +91,15 @@ describe('Preserver tests', function () {
 
         notesPage.archiveNote()
 
-        browser.sleep(browser.params.customMinTimeout)
-
         archivePage.deleteNote()
-
-        browser.sleep(browser.params.customMinTimeout)
 
         expect(notesPage.getNotes().count()).toBe(1,
             'Deleted notes count should be 1 after it was deleted')
     })
 
-    it('should validate Back, Github, Twitter social icons on About page', function () {
+    xit('should validate Back, Github, Twitter social icons on About page', function () {
 
-        notesPage.goTo(notesPage.optionAbout)
+        notesPage.goTo(notesPage.optionAbout, aboutPage.iconTwitter)
 
         expect(aboutPage.iconArrowLeft.isDisplayed()).toBe(true,
             'Icon Back (Arrow Left) should be displayed')

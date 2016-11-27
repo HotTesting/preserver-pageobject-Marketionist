@@ -1,3 +1,5 @@
+let EC = protractor.ExpectedConditions
+
 class BasePage {
 
     constructor() {
@@ -7,8 +9,8 @@ class BasePage {
         this.noteFirst = $$('.grid-container .grid-item').first()
         this.buttonOptions = $('.navbar-right .glyphicon-option-vertical')
 
-        this.createOptionSelector = (optionText) => `//*[ancestor::*[@class="dropdown open"]` +
-            ` and text()="${optionText}"]`
+        this.createOptionSelector = (optionText) => `//*[ancestor::*[@class="dropdown open"]
+            and text()="${optionText}"]`
 
         this.optionArchiveNotes = element(by.xpath(this.createOptionSelector('Archive Notes')))
         this.optionMyNotes = element(by.xpath(this.createOptionSelector('My Notes')))
@@ -21,10 +23,18 @@ class BasePage {
         return $$('.grid-container .grid-item')
     }
 
-    goTo(option) {
+    goTo(option, elem) {
+        let pageElem
+
         this.buttonOptions.click()
         option.click()
-        browser.sleep(browser.params.customTimeout)
+        if (elem) {
+            pageElem = elem
+        } else {
+            pageElem = this.buttonOptions
+        }
+        browser.wait(EC.visibilityOf(pageElem), browser.params.customTimeout,
+            'Menu options button should be visible after page open')
     }
 
 }
