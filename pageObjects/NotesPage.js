@@ -12,14 +12,14 @@ class NotesPage extends BasePage {
     }
 
     // Creates note on the page
-    createNote(title, body) {
+    createNote(title = '', body = '') {
         this.newNoteBodyField.click()
         this.newNoteBodyField.sendKeys(body)
         this.newNoteTitleField.click()
         this.newNoteTitleField.sendKeys(title)
         element(by.buttonText('Save')).click()
         if (title !== '' && body !== '') {
-            browser.wait(EC.visibilityOf(this.noteFirst), browser.params.customTimeout,
+            browser.wait(EC.presenceOf(this.noteFirst), browser.params.customTimeout,
                 'Success notification should be visible after note creation')
         }
     }
@@ -29,7 +29,7 @@ class NotesPage extends BasePage {
         this.iconArchive.click()
         // this.notificationSuccess.getAttribute('innerHTML')
         //     .then((text) => console.log('===== ' + text))
-        browser.wait(EC.visibilityOf(this.notificationSuccess), browser.params.customTimeout,
+        browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note archivation')
         this.goTo(this.optionArchiveNotes)
     }

@@ -12,7 +12,7 @@ class ArchivePage extends BasePage {
     unarchiveNote() {
         browser.actions().mouseMove(this.noteFirst).perform()
         this.iconUnarchive.click()
-        browser.wait(EC.visibilityOf(this.notificationSuccess), browser.params.customTimeout,
+        browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note unarchiving')
         this.goTo(this.optionMyNotes)
     }
@@ -20,7 +20,7 @@ class ArchivePage extends BasePage {
     deleteNote() {
         browser.actions().mouseMove(this.noteFirst).perform()
         this.iconDelete.click()
-        browser.wait(EC.visibilityOf(this.notificationSuccess), browser.params.customTimeout,
+        browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note deletion')
         this.goTo(this.optionRecycleBin)
     }

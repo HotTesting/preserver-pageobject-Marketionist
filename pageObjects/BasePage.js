@@ -6,7 +6,7 @@ class BasePage {
         // TODO - find a way to add blocking wait for notification to appear
         this.notificationSuccess = $('.notes-notifications.success')
 
-        this.noteFirst = $$('.grid-container .grid-item').first()
+        this.noteFirst = this.getNotes().first()
         this.buttonOptions = $('.navbar-right .glyphicon-option-vertical')
 
         this.createOptionSelector = (optionText) => `//*[ancestor::*[@class="dropdown open"]
@@ -23,18 +23,11 @@ class BasePage {
         return $$('.grid-container .grid-item')
     }
 
-    goTo(option, elem) {
-        let pageElem
-
+    goTo(option, elem = this.buttonOptions) {
         this.buttonOptions.click()
         option.click()
-        if (elem) {
-            pageElem = elem
-        } else {
-            pageElem = this.buttonOptions
-        }
-        browser.wait(EC.visibilityOf(pageElem), browser.params.customTimeout,
-            'Menu options button should be visible after page open')
+        browser.wait(EC.and(EC.presenceOf(elem), EC.visibilityOf(elem)),
+            browser.params.customTimeout, 'Menu options button should be visible after page open')
     }
 
 }
