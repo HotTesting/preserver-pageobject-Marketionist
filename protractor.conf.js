@@ -5,7 +5,7 @@ module.exports.config = {
     // Custom parameters can be specified here
     params: {
         // Custom timeouts to wait for elements on the page
-        customTimeout: 1500,
+        customTimeout: 3000,
         customMinTimeout: 500,
     }
 }

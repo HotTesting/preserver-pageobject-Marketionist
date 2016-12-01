@@ -79,11 +79,7 @@ describe('Preserver tests', function () {
 
         notesPage.archiveNote()
 
-        browser.sleep(browser.params.customMinTimeout)
-
         archivePage.unarchiveNote()
-
-        browser.sleep(browser.params.customMinTimeout)
 
         expect(notesPage.getNotes().count()).toBe(1,
             'Archived notes count should be 1 after it was unarchived')
@@ -95,11 +91,7 @@ describe('Preserver tests', function () {
 
         notesPage.archiveNote()
 
-        browser.sleep(browser.params.customMinTimeout)
-
         archivePage.deleteNote()
-
-        browser.sleep(browser.params.customMinTimeout)
 
         expect(notesPage.getNotes().count()).toBe(1,
             'Deleted notes count should be 1 after it was deleted')
@@ -107,7 +99,7 @@ describe('Preserver tests', function () {
 
     it('should validate Back, Github, Twitter social icons on About page', function () {
 
-        notesPage.goTo(notesPage.optionAbout)
+        notesPage.goTo(notesPage.optionAbout, aboutPage.iconTwitter)
 
         expect(aboutPage.iconArrowLeft.isDisplayed()).toBe(true,
             'Icon Back (Arrow Left) should be displayed')
