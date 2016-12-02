@@ -1,4 +1,5 @@
 module.exports.config = {
+
     useAllAngular2AppRoots: true,
     specs: ['specs/*.spec.js'],
     suites: {
@@ -17,6 +18,7 @@ module.exports.config = {
      * How long to wait for a page to load.
      */
     getPageTimeout: 30000,
+
     onPrepare: function () {
         //jasmine.getEnv().addReporter({})
 
@@ -50,4 +52,5 @@ module.exports.config = {
             })
         })
     }
+
 }
