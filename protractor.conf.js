@@ -1,6 +1,10 @@
 module.exports.config = {
     useAllAngular2AppRoots: true,
     specs: ['specs/*.spec.js'],
+    suites: {
+        about: 'specs/about.spec.js',
+        all: 'specs/*.spec.js'
+    },
     directConnect: true,
     baseUrl: 'http://www.hiteshbalar.com/preserver/notes',
     // Custom parameters can be specified here
@@ -9,6 +13,10 @@ module.exports.config = {
         customTimeout: 3000,
         customMinTimeout: 500,
     },
+     /**
+     * How long to wait for a page to load.
+     */
+    getPageTimeout: 30000,
     onPrepare: function () {
         //jasmine.getEnv().addReporter({})
 

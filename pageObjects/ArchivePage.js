@@ -14,7 +14,7 @@ class ArchivePage extends BasePage {
         this.iconUnarchive.click()
         browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note unarchiving')
-        this.goTo(this.optionMyNotes)
+        this.menu.openMyNotesPage()
     }
 
     deleteNote() {
@@ -22,7 +22,7 @@ class ArchivePage extends BasePage {
         this.iconDelete.click()
         browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note deletion')
-        this.goTo(this.optionRecycleBin)
+        this.menu.openRecycleBinPage()
     }
 }
 

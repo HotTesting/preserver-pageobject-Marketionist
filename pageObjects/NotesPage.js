@@ -31,7 +31,7 @@ class NotesPage extends BasePage {
         //     .then((text) => console.log('===== ' + text))
         browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note archivation')
-        this.goTo(this.optionArchiveNotes)
+        this.menu.openArchiveNotesPage()
     }
 }
 
