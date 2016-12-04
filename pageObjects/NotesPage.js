@@ -11,17 +11,19 @@ class NotesPage extends BasePage {
         this.notificationSuccess = $('.notes-notifications.success')
     }
 
-    // Creates note on the page
-    createNote(title = '', body = '') {
+    prepareNote(title = '', body = '') {
         this.newNoteBodyField.click()
         this.newNoteBodyField.sendKeys(body)
         this.newNoteTitleField.click()
         this.newNoteTitleField.sendKeys(title)
         element(by.buttonText('Save')).click()
-        if (title !== '' && body !== '') {
-            browser.wait(EC.presenceOf(this.noteFirst), browser.params.customTimeout,
-                'Success notification should be visible after note creation')
-        }
+    }
+
+    // Creates note on the page
+    createNote(title = '', body = '') {
+        this.prepareNote(title, body)
+        browser.wait(EC.elementToBeClickable(this.noteFirst), browser.params.customTimeout,
+            'Success notification should be visible after note creation')
     }
 
     archiveNote() {
