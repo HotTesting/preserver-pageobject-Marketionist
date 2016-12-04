@@ -10,8 +10,9 @@ describe('Archive note tests:', function () {
 
         notesPage.createNote('Test', 'Test')
         notesPage.archiveNote()
+        notesPage.menu.openArchiveNotesPage()
 
-        expect(notesPage.getNotes().count()).toBe(1,
+        expect(archivePage.getNotes().count()).toBe(1,
             'Archived notes count should be 1 after it was archived')
     })
 
@@ -19,8 +20,9 @@ describe('Archive note tests:', function () {
 
         notesPage.createNote('Test', 'Test')
         notesPage.archiveNote()
+        notesPage.menu.openArchiveNotesPage()
         archivePage.unarchiveNote()
-
+        notesPage.menu.openMyNotesPage()
         expect(notesPage.getNotes().count()).toBe(1,
             'Unarchived notes count should be 1 after it was unarchived')
     })
@@ -28,11 +30,11 @@ describe('Archive note tests:', function () {
     it('archived note should be deleted', function () {
 
         notesPage.createNote('Test', 'Test')
-
+        
         notesPage.archiveNote()
-
+        notesPage.menu.openArchiveNotesPage()
         archivePage.deleteNote()
-
+        notesPage.menu.openRecycleBinPage()
         expect(notesPage.getNotes().count()).toBe(1,
             'Deleted notes count should be 1 after it was deleted')
     })

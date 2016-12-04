@@ -13,7 +13,9 @@ describe('Delete note tests:', function () {
 
         notesPage.createNote('Test', 'Test')
         archivePage.deleteNote()
+        notesPage.menu.openRecycleBinPage()
 
+        // TODO: change notesPage.getNotes() to recycleBinPage when PO will be ready
         expect(notesPage.getNotes().count()).toBe(1,
             'Deleted notes count should be 1 after it was deleted')
     })
