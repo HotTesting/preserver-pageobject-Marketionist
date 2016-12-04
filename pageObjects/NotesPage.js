@@ -19,7 +19,7 @@ class NotesPage extends BasePage {
         this.newNoteTitleField.sendKeys(title)
         element(by.buttonText('Save')).click()
         if (title !== '' && body !== '') {
-            browser.wait(EC.presenceOf(this.noteFirst), browser.params.customTimeout,
+            browser.wait(EC.elementToBeClickable(this.noteFirst), browser.params.customTimeout,
                 'Success notification should be visible after note creation')
         }
     }
