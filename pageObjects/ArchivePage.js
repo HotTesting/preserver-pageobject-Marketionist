@@ -22,6 +22,7 @@ class ArchivePage extends BasePage {
         browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note deletion')
     }
+
 }
 
 // Exports this page object to use it in all other files
