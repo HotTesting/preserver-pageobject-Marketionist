@@ -1,5 +1,6 @@
 # http://docs.travis-ci.com/user/workers/container-based-infrastructure/
-sudo: false
+sudo: required
+dist: trusty
 
 # http://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 language: node_js
@@ -11,9 +12,16 @@ node_js:
 
 # http://docs.travis-ci.com/user/gui-and-headless-browsers
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+ - export CHROME_BIN=/usr/bin/google-chrome
+ # start xvbfb for e2e tests
+ - export DISPLAY=:99.0
+ - sh -e /etc/init.d/xvfb start
+ # give xvfb some time to start
+ - sleep 3
+ - sudo apt-get update
+ - sudo apt-get install -y libappindicator1 fonts-liberation
+ - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+ - sudo dpkg -i google-chrome*.deb
 
 install:
   - npm install
