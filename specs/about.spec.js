@@ -8,7 +8,7 @@ describe('About page tests:', function () {
 
     it('should validate Back, Github, Twitter social icons on About page', function () {
 
-        notesPage.goTo(notesPage.optionAbout, aboutPage.iconTwitter)
+        aboutPage.menu.openAboutPage(aboutPage.iconTwitter)
 
         expect(aboutPage.iconArrowLeft.isDisplayed()).toBe(true,
             'Icon Back (Arrow Left) should be displayed')
