@@ -14,7 +14,6 @@ class ArchivePage extends BasePage {
         this.iconUnarchive.click()
         browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note unarchiving')
-        this.goTo(this.optionMyNotes)
     }
 
     deleteNote() {
@@ -22,8 +21,8 @@ class ArchivePage extends BasePage {
         this.iconDelete.click()
         browser.wait(EC.presenceOf(this.notificationSuccess), browser.params.customTimeout,
             'Success notification should be visible after note deletion')
-        this.goTo(this.optionRecycleBin)
     }
+
 }
 
 // Exports this page object to use it in all other files
