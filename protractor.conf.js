@@ -1,6 +1,16 @@
 module.exports.config = {
 
     useAllAngular2AppRoots: true,
+    capabilities: {
+        browserName: 'chrome',
+        chromeOptions: {
+            args: ['--no-sandbox']
+        },
+        name: 'Preserver Tests Job',
+        logName: 'Chrome - English',
+        shardTestFiles: true,
+        maxInstances: 3
+    },
     specs: ['specs/*.spec.js'],
     suites: {
         about: 'specs/about.spec.js',
@@ -14,20 +24,24 @@ module.exports.config = {
         customTimeout: 3000,
         customMinTimeout: 500,
     },
-     /**
-     * How long to wait for a page to load.
-     */
+
+    // The timeout in milliseconds for each script run on the browser.
+    allScriptsTimeout: 60000,
+    // How long to wait for a page to load in milliseconds.
     getPageTimeout: 30000,
 
     onPrepare: function () {
         //jasmine.getEnv().addReporter({})
+
+        // Smartly searches for the element for additional time, works on the browser side
+        browser.manage().timeouts().implicitlyWait(2000);
 
         beforeEach(function () {
             browser.get('')
             browser.sleep(browser.params.customTimeout)
         })
 
-        //This function will be executed after each IT block in this DESCRIBE block
+        // This function will be executed after each IT block in this DESCRIBE block
         afterEach(function () {
             // Wiping cookie files ONLY for current domain
             browser.manage().deleteAllCookies()
