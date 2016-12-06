@@ -6,10 +6,10 @@
     "postinstall": "webdriver-manager update",
     "test": "protractor"
   },
-  "author": "Oleksandr Khotemskyi <xotabu4@gmail.com> (https://github.com/Xotabu4)",
+  "author": "Oleksandr Khotemskyi <xotabu4@gmail.com> (https://github.com/Xotabu4), Dmytro Shpakovskyi",
   "license": "MIT",
-
-  "dependencies":{
-    "protractor": "^4.0.10"
+  "dependencies": {
+    "protractor": "^4.0.10",
+    "jasmine-console-reporter": "^1.2.7"
   }
 }

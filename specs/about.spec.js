@@ -2,7 +2,7 @@
 let NotesPage = require('./../pageObjects/NotesPage.js').NotesPage
 let AboutPage = require('./../pageObjects/AboutPage.js').AboutPage
 
-describe('About page tests:', function () {
+describe('About page tests', function () {
     let notesPage = new NotesPage()
     let aboutPage = new AboutPage()
 

@@ -2,7 +2,7 @@
 let NotesPage = require('./../pageObjects/NotesPage.js').NotesPage
 let ArchivePage = require('./../pageObjects/ArchivePage.js').ArchivePage
 
-describe('Archive note tests:', function () {
+describe('Archive note tests', function () {
     let notesPage = new NotesPage()
     let archivePage = new ArchivePage()
 
