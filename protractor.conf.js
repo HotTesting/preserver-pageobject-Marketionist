@@ -120,14 +120,14 @@ if (process.env.TRAVIS_BUILD_NUMBER) {
             maxInstances: 4,
             specs: ['specs/*.spec.js']
         },
-        {
-            browserName: 'firefox',
-            build: process.env.TRAVIS_BUILD_NUMBER,
-            name: 'Preserver Tests Job -  Firefox',
-            shardTestFiles: true,
-            maxInstances: 4,
-            specs: ['specs/*.spec.js']
-        }
+        // {
+        //     browserName: 'firefox',
+        //     build: process.env.TRAVIS_BUILD_NUMBER,
+        //     name: 'Preserver Tests Job -  Firefox',
+        //     shardTestFiles: true,
+        //     maxInstances: 4,
+        //     specs: ['specs/*.spec.js']
+        // }
     ]
 }
 
