@@ -31,7 +31,7 @@ let config = {
     },
 
     // The timeout in milliseconds for each script run on the browser.
-    allScriptsTimeout: 60000,
+    allScriptsTimeout: 30000,
     // How long to wait for a page to load in milliseconds.
     getPageTimeout: 30000,
 
