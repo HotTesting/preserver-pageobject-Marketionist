@@ -1,7 +1,7 @@
 // Imports page objects from other files
 let NotesPage = require('./../pageObjects/NotesPage.js').NotesPage
 
-describe('Create note tests:', function () {
+describe('Create note tests', function () {
     let notesPage = new NotesPage()
 
     it('note should be created when title and body provided', function () {
