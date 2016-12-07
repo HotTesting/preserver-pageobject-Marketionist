@@ -1,5 +1,3 @@
-let configCI = require('./ci.conf.js').configCI
-
 let config = {
 
     useAllAngular2AppRoots: true,
@@ -104,4 +102,9 @@ let config = {
 
 }
 
-module.exports.configFinal = Object.assign(config, configCI)
+if (process.env.TRAVIS_BUILD_NUMBER) {
+    let configCI = require('./ci.conf.js').configCI
+    module.exports.config = Object.assign(config, configCI)
+} else {
+    module.exports.config = config
+}
