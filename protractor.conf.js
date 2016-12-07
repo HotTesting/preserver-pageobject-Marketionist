@@ -1,3 +1,5 @@
+let configCI = require('./ci.conf.js').configCI
+
 let config = {
 
     useAllAngular2AppRoots: true,
@@ -102,33 +104,4 @@ let config = {
 
 }
 
-if (process.env.TRAVIS_BUILD_NUMBER) {
-    config.multiCapabilities = [
-        {
-            browserName: 'chrome',
-            chromeOptions: {
-                // Run without sandbox, set browser language
-                args: ['--no-sandbox', 'lang=en-US'],
-                // Set Accept-Language header
-                prefs: {
-                    intl: { accept_languages: "en-US" },
-                }
-            },
-            build: process.env.TRAVIS_BUILD_NUMBER,
-            name: 'Preserver Tests Job - Chrome',
-            shardTestFiles: true,
-            maxInstances: 4,
-            specs: ['specs/*.spec.js']
-        },
-        // {
-        //     browserName: 'firefox',
-        //     build: process.env.TRAVIS_BUILD_NUMBER,
-        //     name: 'Preserver Tests Job -  Firefox',
-        //     shardTestFiles: true,
-        //     maxInstances: 4,
-        //     specs: ['specs/*.spec.js']
-        // }
-    ]
-}
-
-module.exports.config = config
+module.exports.configFinal = Object.assign(config, configCI)
