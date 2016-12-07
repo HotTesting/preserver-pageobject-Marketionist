@@ -1,6 +1,6 @@
 if (process.env.TRAVIS_BUILD_NUMBER) {
     module.exports.configCI = {
-        multiCapabilities = [
+        multiCapabilities: [
             {
                 browserName: 'chrome',
                 chromeOptions: {
