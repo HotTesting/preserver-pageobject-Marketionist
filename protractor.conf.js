@@ -19,8 +19,11 @@ let config = {
     specs: ['specs/*.spec.js'],
     suites: {
         about: 'specs/about.spec.js',
+        create: 'specs/create.note.spec.js',
+        delete: 'specs/delete.note.spec.js',
         all: 'specs/*.spec.js'
     },
+    // suite: 'create',
     directConnect: true,
     baseUrl: 'http://www.hiteshbalar.com/preserver/notes',
     // Custom parameters can be specified here
@@ -103,32 +106,8 @@ let config = {
 }
 
 if (process.env.TRAVIS_BUILD_NUMBER) {
-    config.multiCapabilities = [
-        {
-            browserName: 'chrome',
-            chromeOptions: {
-                // Run without sandbox, set browser language
-                args: ['--no-sandbox', 'lang=en-US'],
-                // Set Accept-Language header
-                prefs: {
-                    intl: { accept_languages: "en-US" },
-                }
-            },
-            build: process.env.TRAVIS_BUILD_NUMBER,
-            name: 'Preserver Tests Job - Chrome',
-            shardTestFiles: true,
-            maxInstances: 4,
-            specs: ['specs/*.spec.js']
-        },
-        // {
-        //     browserName: 'firefox',
-        //     build: process.env.TRAVIS_BUILD_NUMBER,
-        //     name: 'Preserver Tests Job -  Firefox',
-        //     shardTestFiles: true,
-        //     maxInstances: 4,
-        //     specs: ['specs/*.spec.js']
-        // }
-    ]
+    let configCI = require('./ci.conf.js').configCI
+    module.exports.config = Object.assign(config, configCI)
+} else {
+    module.exports.config = config
 }
-
-module.exports.config = config

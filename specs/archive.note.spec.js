@@ -1,10 +1,12 @@
 // Imports page objects from other files
 let NotesPage = require('./../pageObjects/NotesPage.js').NotesPage
 let ArchivePage = require('./../pageObjects/ArchivePage.js').ArchivePage
+let RecycleBinPage = require('./../pageObjects/RecycleBinPage.js').RecycleBinPage
 
 describe('Archive note tests', function () {
     let notesPage = new NotesPage()
     let archivePage = new ArchivePage()
+    let recycleBinPage = new RecycleBinPage()
 
     it('note should be archived', function () {
 
@@ -33,7 +35,7 @@ describe('Archive note tests', function () {
         notesPage.createNote('Test', 'Test')
         notesPage.archiveNote()
         notesPage.menu.openArchiveNotesPage()
-        archivePage.deleteNote()
+        recycleBinPage.deleteNote('successfully')
         notesPage.menu.openRecycleBinPage()
 
         expect(notesPage.getNotes().count()).toBe(1,
