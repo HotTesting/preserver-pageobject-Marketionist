@@ -1,21 +1,43 @@
 // Imports page objects from other files
 let NotesPage = require('./../pageObjects/NotesPage.js').NotesPage
-let ArchivePage = require('./../pageObjects/ArchivePage.js').ArchivePage
+let RecycleBinPage = require('./../pageObjects/RecycleBinPage.js').RecycleBinPage
 
 describe('Delete note tests', function () {
     let notesPage = new NotesPage()
-    let archivePage = new ArchivePage()
+    let recycleBinPage = new RecycleBinPage()
 
     // TODO: write tests for delete note (delete forever, restore) - click on icons
     it('note should be deleted', function () {
 
         notesPage.createNote('Test', 'Test')
-        archivePage.deleteNote()
-        notesPage.menu.openRecycleBinPage()
+        recycleBinPage.deleteNote('successfully')
+        recycleBinPage.menu.openRecycleBinPage()
 
-        // TODO: change notesPage.getNotes() to recycleBinPage when PO will be ready
-        expect(notesPage.getNotes().count()).toBe(1,
+        expect(recycleBinPage.getNotes().count()).toBe(1,
             'Deleted notes count should be 1 after it was deleted')
+    })
+
+    it('note should be deleted forever', function () {
+
+        notesPage.createNote('Test', 'Test')
+        recycleBinPage.deleteNote('successfully')
+        recycleBinPage.menu.openRecycleBinPage()
+        recycleBinPage.deleteNote('forever')
+
+        expect(recycleBinPage.getNotes().count()).toBe(0,
+            'Deleted notes count should be 0 after it was deleted')
+    })
+
+    it('note should be restored', function () {
+
+        notesPage.createNote('Test', 'Test')
+        recycleBinPage.deleteNote('successfully')
+        recycleBinPage.menu.openRecycleBinPage()
+        recycleBinPage.restoreNote()
+        recycleBinPage.menu.openMyNotesPage()
+
+        expect(notesPage.getNotes().count()).toBe(1,
+            'Notes count should be 1 after it was restored')
     })
 
 })

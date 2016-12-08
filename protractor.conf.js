@@ -19,6 +19,7 @@ let config = {
     specs: ['specs/*.spec.js'],
     suites: {
         about: 'specs/about.spec.js',
+        delete: 'specs/delete.note.spec.js',
         all: 'specs/*.spec.js'
     },
     directConnect: true,
