@@ -7,7 +7,7 @@ module.exports.configCI = {
                 args: ['--no-sandbox', 'lang=en-US'],
                 // Set Accept-Language header
                 prefs: {
-                    intl: { accept_languages: "en-US" },
+                    intl: { accept_languages: 'en-US' }
                 }
             },
             build: process.env.TRAVIS_BUILD_NUMBER,
@@ -15,7 +15,7 @@ module.exports.configCI = {
             shardTestFiles: true,
             maxInstances: 5,
             specs: ['specs/*.spec.js']
-        },
+        }
         // {
         //     browserName: 'firefox',
         //     build: process.env.TRAVIS_BUILD_NUMBER,

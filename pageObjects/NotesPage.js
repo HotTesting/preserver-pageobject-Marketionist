@@ -9,6 +9,9 @@ class NotesPage extends BasePage {
         this.newNoteTitleField = $('.note-editor input[placeholder="Title"]')
         this.iconArchive = $('[title="Archive"] > .fa-download')
         this.notificationSuccess = $('.notes-notifications.success')
+        this.txtNoteTitle = 'Test title',
+        this.txtNoteBody = 'Test body',
+        this.txtEmpty = ''
     }
 
     prepareNote(title = '', body = '') {
