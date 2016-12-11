@@ -1,5 +1,4 @@
 let BasePage = require('./BasePage.js').BasePage
-let EC = protractor.ExpectedConditions
 
 class NotesPage extends BasePage {
 
@@ -9,8 +8,8 @@ class NotesPage extends BasePage {
         this.newNoteTitleField = $('.note-editor input[placeholder="Title"]')
         this.iconArchive = $('[title="Archive"] > .fa-download')
         this.notificationSuccess = $('.notes-notifications.success')
-        this.txtNoteTitle = 'Test title',
-        this.txtNoteBody = 'Test body',
+        this.txtNoteTitle = 'Test title'
+        this.txtNoteBody = 'Test body'
         this.txtEmpty = ''
     }
 

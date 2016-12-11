@@ -1,5 +1,4 @@
 let BasePage = require('./BasePage.js').BasePage
-let EC = protractor.ExpectedConditions
 
 class ArchivePage extends BasePage {
 
