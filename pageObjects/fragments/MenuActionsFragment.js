@@ -1,45 +1,3 @@
-let EC = protractor.ExpectedConditions
-
-class MenuActionsFragment {
-
-    constructor() {
-        this.navBarElem = $('.navbar')
-        this.buttonOptions = this.navBarElem.$('.navbar-right a.dropdown-toggle')
-
-        this.menu = new MenuFragment(this.navBarElem)   
-    }
-
-    _openMenu() {
-        this.buttonOptions.click()
-        browser.wait(EC.elementToBeClickable(this.menu.menuElem), browser.params.customTimeout,
-            'Menu should be present on the page after open')
-
-        return this.menu
-    }
-
-    openArchiveNotesPage() {
-        this._openMenu().clickArchiveNoteOption()
-        browser.wait(EC.and(EC.presenceOf(this.buttonOptions), EC.elementToBeClickable(this.buttonOptions)),
-            browser.params.customTimeout, 'Menu options button should be visible after page open')   
-    }
-    openMyNotesPage() {
-        this._openMenu().clickMyNotesOption()
-        browser.wait(EC.and(EC.presenceOf(this.buttonOptions), EC.elementToBeClickable(this.buttonOptions)),
-            browser.params.customTimeout, 'Menu options button should be visible after page open')   
-    }
-    openRecycleBinPage() {
-        this._openMenu().clickRecycleBinOption()
-        browser.wait(EC.and(EC.presenceOf(this.buttonOptions), EC.elementToBeClickable(this.buttonOptions)),
-            browser.params.customTimeout, 'Menu options button should be visible after page open')   
-    }
-    openAboutPage(elem) {
-        this._openMenu().clickAboutOption()
-        browser.wait(EC.elementToBeClickable(elem), browser.params.customTimeout,
-            'Elem on About page should be visible after page open')
-    }
-
-}
-
 class MenuFragment {
     constructor(navBarElem) {
         this.navBarElem = navBarElem
@@ -68,6 +26,46 @@ class MenuFragment {
     }
     clickAboutOption() {
         this.optionAbout.click()
+    }
+
+}
+
+class MenuActionsFragment {
+
+    constructor() {
+        this.navBarElem = $('.navbar')
+        this.buttonOptions = this.navBarElem.$('.navbar-right a.dropdown-toggle')
+
+        this.menu = new MenuFragment(this.navBarElem)
+    }
+
+    _openMenu() {
+        this.buttonOptions.click()
+        browser.wait(EC.elementToBeClickable(this.menu.menuElem), browser.params.customTimeout,
+            'Menu should be present on the page after open')
+
+        return this.menu
+    }
+
+    openArchiveNotesPage() {
+        this._openMenu().clickArchiveNoteOption()
+        browser.wait(EC.and(EC.presenceOf(this.buttonOptions), EC.elementToBeClickable(this.buttonOptions)),
+            browser.params.customTimeout, 'Menu options button should be visible after page open')
+    }
+    openMyNotesPage() {
+        this._openMenu().clickMyNotesOption()
+        browser.wait(EC.and(EC.presenceOf(this.buttonOptions), EC.elementToBeClickable(this.buttonOptions)),
+            browser.params.customTimeout, 'Menu options button should be visible after page open')
+    }
+    openRecycleBinPage() {
+        this._openMenu().clickRecycleBinOption()
+        browser.wait(EC.and(EC.presenceOf(this.buttonOptions), EC.elementToBeClickable(this.buttonOptions)),
+            browser.params.customTimeout, 'Menu options button should be visible after page open')
+    }
+    openAboutPage(elem) {
+        this._openMenu().clickAboutOption()
+        browser.wait(EC.elementToBeClickable(elem), browser.params.customTimeout,
+            'Elem on About page should be visible after page open')
     }
 
 }

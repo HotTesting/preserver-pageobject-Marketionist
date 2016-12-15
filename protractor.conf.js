@@ -8,7 +8,7 @@ let config = {
             args: ['--no-sandbox', 'lang=en-US'],
             // Set Accept-Language header
             prefs: {
-                intl: { accept_languages: "en-US" },
+                intl: { accept_languages: 'en-US' }
             }
         },
         name: 'Preserver Tests Job',
@@ -31,6 +31,7 @@ let config = {
         // Custom timeouts to wait for elements on the page
         customTimeout: 3000,
         customMinTimeout: 500,
+        implicitTimeout: 2000
     },
 
     // The timeout in milliseconds for each script run on the browser.
@@ -40,16 +41,19 @@ let config = {
 
     // Remove protractor dot reporter
     jasmineNodeOpts: {
-        print: function() {}
+        print: function () {}
     },
 
     onPrepare: function () {
-        //jasmine.getEnv().addReporter({})
+
+        global.EC = protractor.ExpectedConditions
+
+        // jasmine.getEnv().addReporter({})
 
         // Config for https://www.npmjs.com/package/jasmine-spec-reporter
         // let SpecReporter = require('jasmine-spec-reporter')
         // jasmine.getEnv().addReporter(new SpecReporter({
-        //     displayStacktrace: 'specs',     // display stacktrace for each failed assertion, values: (all|specs|summary|none)
+        //     displayStacktrace: 'specs',     // display stacktrace for each failed assertion, (all|specs|summary|none)
         //     displaySuccessesSummary: false, // display summary of all successes after execution
         //     displayFailuresSummary: false,  // display summary of all failures after execution
         //     displayPendingSummary: true,    // display summary of all pending specs after execution
@@ -61,6 +65,7 @@ let config = {
 
         // Config for https://www.npmjs.com/package/jasmine-console-reporter
         let JasmineConsoleReporter = require('jasmine-console-reporter')
+
         jasmine.getEnv().addReporter(new JasmineConsoleReporter({
             colors: 2,           // (0|false)|(1|true)|2
             cleanStack: 2,       // (0|false)|(1|true)|2|3
@@ -70,7 +75,7 @@ let config = {
         }))
 
         // Smartly searches for the element for additional time, works on the browser side
-        browser.manage().timeouts().implicitlyWait(2000);
+        browser.manage().timeouts().implicitlyWait(browser.params.implicitTimeout);
 
         beforeEach(function () {
             browser.get('')
@@ -99,7 +104,7 @@ let config = {
                 function (err) {
                 // Errors will be thrown when browser is on default data URL.
                 // indexedDB storage is disabled for data URLs
-            })
+                })
         })
     }
 
@@ -107,6 +112,7 @@ let config = {
 
 if (process.env.TRAVIS_BUILD_NUMBER) {
     let configCI = require('./ci.conf.js').configCI
+
     module.exports.config = Object.assign(config, configCI)
 } else {
     module.exports.config = config
