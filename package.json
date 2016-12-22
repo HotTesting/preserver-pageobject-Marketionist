@@ -1,7 +1,7 @@
 {
   "name": "preserver2",
   "version": "1.0.1",
-  "description": "Demonstration project for students2",
+  "description": "Protractor testing demonstration project",
   "scripts": {
     "postinstall": "webdriver-manager update",
     "test": "protractor"
@@ -9,7 +9,7 @@
   "author": "Dmytro Shpakovskyi, Oleksandr Khotemskyi <xotabu4@gmail.com> (https://github.com/Xotabu4)",
   "license": "MIT",
   "dependencies": {
-    "protractor": "^4.0.13",
+    "protractor": "^4.0.14",
     "jasmine-console-reporter": "^1.2.7"
   }
 }
